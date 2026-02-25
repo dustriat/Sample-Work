@@ -1,8 +1,10 @@
 /*
-This query shows that trip 1004
-had a rider with id 105, but 105 is
-not shown in the rider table
+This is a basic mini-project for
+the Codecademy Learn SQL course.
+This code shows the requested queries
+for the Lyft Trip analysis.
 */
+
 SELECT * FROM trips;
 SELECT * FROM riders;
 SELECT * FROM cars;
