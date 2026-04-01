@@ -1,10 +1,3 @@
-/*
-This is a basic mini-project for
-the Codecademy Learn SQL course.
-This code creates the table for
-the rest of the project.
-*/
-
 CREATE TABLE startups (
     name TEXT,
     location TEXT,
@@ -89,3 +82,45 @@ INSERT INTO startups VALUES
 ('Unfade','New York','Fashion',4,400000,5600000,2016,'A','Peggy Grimes','Everything Hair'),
 ('OrangeYouLonely','Minneapolis','Social',20,1200000,14000000,2012,'Seed','Gus Dawson','Dating App for Farmers'),
 ('WellDeserved','San Francisco','E-commerce',4,NULL,NULL,2015,'Seed','Kasima Tharnpipitchai','The Premiere Marketplace for Privilege');
+
+/*
+=================================
+Queries for the Startups analysis
+=================================
+*/
+
+SELECT COUNT(name)
+FROM startups;
+
+--Total value of all companies
+SELECT SUM(valuation)
+FROM startups;
+
+--Which company raised the highest amount during seed stage
+SELECT name, MAX(raised)
+FROM startups
+WHERE stage = 'Seed';
+
+--Oldest startup on this list
+SELECT name, MIN(founded)
+FROM startups;
+
+--Average valuation by startup category
+SELECT category, ROUND(AVG(valuation),2)
+FROM startups
+GROUP BY 1
+ORDER BY 2 DESC;
+
+--Most competitive startup markets by category
+SELECT category, COUNT(*)
+FROM startups
+GROUP BY 1
+HAVING COUNT(*) > 3
+ORDER BY 2 DESC;
+
+--Average size of startups in different locations
+SELECT location, category, ROUND(AVG(employees),0)
+FROM startups
+GROUP BY location
+HAVING AVG(employees) > 500
+ORDER BY employees DESC;

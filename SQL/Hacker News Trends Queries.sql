@@ -1,10 +1,3 @@
-/*
-This is a basic mini-project for
-the Codecademy Learn SQL course.
-This code shows the requested queries
-for the Hacker News analysis.
-*/
-
 SELECT title, score
  FROM hacker_news
  ORDER BY score DESC

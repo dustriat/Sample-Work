@@ -1,10 +1,3 @@
-/*
-This is a basic mini-project for
-the Codecademy Learn SQL course.
-This code shows the table creation
-for the X-Men mutant team.
-*/
-
 CREATE TABLE xmen (
    id INTEGER,
    name TEXT,

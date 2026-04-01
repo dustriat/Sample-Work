@@ -1,10 +1,3 @@
-/*
-This is a basic mini-project for
-the Codecademy Learn SQL course.
-This code creates the table for
-the rest of the project.
-*/
-
 CREATE TABLE nomnom (
     name TEXT,
     neighborhood TEXT,
@@ -68,3 +61,61 @@ INSERT INTO nomnom VALUES
 ('Los Hermanos','Brooklyn','Mexican',4.4,'$',NULL),
 ('The Standard Biergarten','Downtown','American',4.0,'$$','A'),
 ('Ootoya','Downtown','Japanese',4.5,'$$','A');
+
+/*
+=======================================
+Queries for the NY Restaurants analysis
+=======================================
+*/
+
+SELECT DISTINCT neighborhood
+FROM nomnom;
+
+SELECT DISTINCT cuisine
+FROM nomnom;
+
+--Good Chinese food
+SELECT name, review
+FROM nomnom
+WHERE cuisine = 'Chinese'
+  AND review >= 4;
+
+--Abbi and Ilana request fancy dinner
+SELECT name, price
+FROM nomnom
+WHERE cuisine = 'Italian'
+  AND price = '$$$';
+
+--Trey can't remember the meatball restaurant
+SELECT name
+FROM nomnom
+WHERE name LIKE '%meatball%';
+
+--Nearby delivery
+SELECT name, cuisine, review
+FROM nomnom
+WHERE neighborhood = 'Midtown'
+  OR  neighborhood = 'Downtown'
+  OR  neighborhood = 'Chinatown';
+
+--Missing health grading
+SELECT name
+FROM nomnom
+WHERE health IS NULL;
+
+--Top 10 restaurants
+SELECT name, cuisine, neighborhood, review
+FROM nomnom
+ORDER BY review DESC
+LIMIT 10;
+
+--Change rating names
+SELECT name, cuisine,
+  CASE
+    WHEN review > 4.5 THEN 'Extraordinary'
+    WHEN review > 4   THEN 'Excellent'
+    WHEN review > 3   THEN 'Good'
+    WHEN review > 2   THEN 'Fair'
+    ELSE 'Poor'
+  END AS 'Rating'
+FROM nomnom;

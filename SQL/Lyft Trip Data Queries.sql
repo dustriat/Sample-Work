@@ -1,10 +1,3 @@
-/*
-This is a basic mini-project for
-the Codecademy Learn SQL course.
-This code shows the requested queries
-for the Lyft Trip analysis.
-*/
-
 SELECT * FROM trips;
 SELECT * FROM riders;
 SELECT * FROM cars;
